@@ -21,6 +21,10 @@ double dvdt(float v, float t){
     // return (-0.000647*v*v - 9.81);
 }
 
+double dhdt(float v){
+    return v; //I know this is dumb but its just here to make the process clearer
+}
+
 // takes 1 Runge-Kutta step
 double rk4(double t0, double v0, double dt){
 
@@ -44,6 +48,29 @@ double rk4(double t0, double v0, double dt){
 
 }
 
+// // takes 1 Runge-Kutta step
+// double rk4_dhdt(double t0, double v0, double dt){
+
+//     double k1 = dhdt(v0, t0);
+    
+//     double t1 = t0 + dt/2.0;
+//     double h1 = v0 + k1*dt/2.0;
+//     double k2 = dhdt(v1, t1);
+
+//     double t2 = t0 + dt/2.0;
+//     double h2 = v0 + k2*dt/2.0;
+//     double k3 = dhdt(v2, t2);
+    
+//     double t3 = t0 + dt;
+//     double h3 = v0 + dt*k3;
+//     double k4 = dhdt(v3, t3);
+
+//     double v_step = v0 + dt*(k1 + 2*k2 + 2*k3 + k4)/6.0;
+
+//     return v_step;
+
+// }
+
 // double 
 
 // double rk4_step()
@@ -51,7 +78,7 @@ double rk4(double t0, double v0, double dt){
 int main(void){
     double t0 = 4.729;
     double v0 = 294.06;
-    double dt = 0.01;
+    double dt = 0.1;
     // double h0 = 
     double t_max = 25;
 
@@ -63,6 +90,8 @@ int main(void){
     while(1){
 
         if(t0 >= t_max){
+            break;
+        } else if (v0 <= 0){
             break;
         }
         
