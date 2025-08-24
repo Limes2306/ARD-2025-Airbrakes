@@ -82,18 +82,26 @@ int main(void){
     // double h0 = 
     double t_max = 25;
 
+    double velocity[250] = {0}; //TODO make this better 
+
     double res = dvdt(v0, t0);
 
     double v1;
     double t1;
 
-    while(1){
+    int c = 0;
+
+    velocity[c] = v0;
+
+    while(1){        
 
         if(t0 >= t_max){
             break;
         } else if (v0 <= 0){
             break;
         }
+
+        c++;
         
         v1 = rk4(t0, v0, dt);
         t1 = t0 + dt;
@@ -101,8 +109,12 @@ int main(void){
         v0 = v1;
         t0 = t1;
 
+        velocity[c] = v1;
+
         printf ( "  %g  %g\n", t0, v0);
     }
+
+    
 
     // printf("%.2f\n", );
 
